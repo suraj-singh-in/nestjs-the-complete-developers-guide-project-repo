@@ -12,13 +12,7 @@ import { MessageService } from './messages.service';
 
 @Controller('messages')
 export class MessagesController {
-  messageService: MessageService;
-
-  constructor() {
-    // DONT DO THIS ON REAL APP
-    // USE DEPENDENCY INJECTIOn
-    this.messageService = new MessageService();
-  }
+  constructor(public messageService: MessageService) {}
 
   @Get()
   listMessages() {
@@ -36,6 +30,6 @@ export class MessagesController {
     if (!message) {
       throw new NotFoundException('Message not found');
     }
-    return message
+    return message;
   }
 }
